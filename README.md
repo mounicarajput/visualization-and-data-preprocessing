@@ -14,4 +14,4 @@ Hindi Character - https://www.kaggle.com/ashokpant/devanagari-character-dataset
 more to add.....
 
 # Architecture
-![image](arh.svg)
+![image](architecture.svg)

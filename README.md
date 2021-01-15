@@ -9,7 +9,7 @@
 
 # Scan and extract text from an image 
 ## Data Source
-English Alphabet - https://www.kaggle.com/thomasqazwsxedc/alphabet-characters-fonts-dataset\ <br>
+English Alphabet - https://www.kaggle.com/thomasqazwsxedc/alphabet-characters-fonts-dataset<br>
 Hindi Character - https://www.kaggle.com/ashokpant/devanagari-character-dataset <br>
 more to add.....
 

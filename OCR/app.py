@@ -4,6 +4,8 @@ import os,pytesseract
 from cv2 import cv2
 from PIL import Image
 
+pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\\tesseract'
+
 app = Flask(__name__)
 
 """
@@ -16,7 +18,7 @@ class Images(db.Model):
     data = db.Column(db.LargeBinary)
 """
 
-UPLOAD_FOLDER = os.path.basename('.')
+UPLOAD_FOLDER = os.path.basename('./static')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -39,8 +41,8 @@ def upload():
 
     f = os.path.join(app.config['UPLOAD_FOLDER'], img.filename)
     img.save(f)
-    image = cv2.imread(UPLOAD_FOLDER+"/"+img.filename)
-    os.remove(UPLOAD_FOLDER+"/"+img.filename)
+    saved_image = UPLOAD_FOLDER+"/"+img.filename
+    image = cv2.imread(saved_image)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
     preprocess = request.form["preprocess"]
@@ -51,12 +53,14 @@ def upload():
 
     elif preprocess == "blur":
         gray = cv2.medianBlur(gray, 3)
-    print(preprocess)
+   
 
     filename = "images/{}.png".format(os.getpid())
     cv2.imwrite(filename, gray)
 
-    return "Image saved" 
+    text = pytesseract.image_to_string(Image.open(filename))
+
+    return render_template('text.html', text=text, filename=saved_image)
 
 
 if __name__ == '__main__':

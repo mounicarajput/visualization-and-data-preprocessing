@@ -10,15 +10,20 @@
 </head>
 <body>
 <br>
-
+<hr>
 <div class="container" align="center">
-    <h1 align="center">Input an Image</h1>
-    <br>
-    <form action="/result" method="POST" enctype="multipart/form-data">
+    <h1 align="center">Input an Image</h1><hr>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
         <div class="form-group">
         <input type="file" name="pic" accept="image/*">
         </div>
         <br>
+        <strong>Preprocess :</strong>
+           <label>Thresh</label>
+        <input type="radio" name="preprocess" value="thresh">
+        <label>Blur</label>
+        <input type="radio" name="preprocess" value="blur"><br>
+<br><br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

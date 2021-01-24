@@ -22,6 +22,7 @@ class Images(db.Model):
 UPLOAD_FOLDER = os.path.basename('./static')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+text='a'
 
 @app.route("/")
 def main():
@@ -30,6 +31,7 @@ def main():
 
 @app.route("/upload", methods=['POST', 'GET'])
 def upload():
+    global text
     img = request.files['pic']
         
     """
@@ -59,14 +61,20 @@ def upload():
     filename = "images/{}.png".format(os.getpid())
     cv2.imwrite(filename, gray)
 
-    text = pytesseract.image_to_string(Image.open(filename))
+    text1 = pytesseract.image_to_string(Image.open(filename))
+    print(text1)
+    print(type(text1))
+    #text2=text.append(text1)
+    text += text1 
+    print(type(text))
+    #print(str(text2))
 
     return render_template('text.html', text=text, filename=saved_image)
 
 @app.route("/speech", methods=['POST', 'GET'])
 def speech():
-    if request.method == 'POST': 
-        text = request.form['text']
+    if request.method == 'POST':
+        #text = request.form['text']
         gender = request.form['voices']
         text_to_speech(text, gender)
         return render_template('speech.html')

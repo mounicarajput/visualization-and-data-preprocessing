@@ -4,7 +4,7 @@ import os,pytesseract
 from cv2 import cv2
 from PIL import Image
 
-pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\\tesseract'
+#pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\\tesseract'
 
 app = Flask(__name__)
 

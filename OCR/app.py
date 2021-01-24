@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os,pytesseract
 from cv2 import cv2
 from PIL import Image
+from voice import text_to_speech
 
 #pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\\tesseract'
 
@@ -62,6 +63,13 @@ def upload():
 
     return render_template('text.html', text=text, filename=saved_image)
 
+@app.route("/speech", methods=['POST', 'GET'])
+def speech():
+    if request.method == 'POST': 
+        text = request.form['text']
+        gender = request.form['voices']
+        text_to_speech(text, gender)
+        return render_template('speech.html')
 
 if __name__ == '__main__':
 	app.run(debug=True)

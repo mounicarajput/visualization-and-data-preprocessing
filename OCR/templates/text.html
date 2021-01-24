@@ -22,7 +22,21 @@
 <div class="container" align="center">
     <h1>{{ text }}</h1>
     <img src="{{filename}}" class="image" >
-</div>
+</div> 
+
+<form action="/speech" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <input name="text">{{ text }}</input>
+        <label for="voices">Choose a Voice Assistant</label>
+          <select name="voices" id="voices">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+          </select>
+    </div>
+    <button>
+        Say it!
+  </button>
+</form>
 
 </body>
 </html>

@@ -22,7 +22,7 @@ class Images(db.Model):
 UPLOAD_FOLDER = os.path.basename('./static')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-text='a'
+text=''
 
 @app.route("/")
 def main():

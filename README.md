@@ -15,5 +15,6 @@ more to add.....
 
 # Architecture
 ![image](architecture.svg)
-#visual
+
+# visual
 ![image](1feature.png)
